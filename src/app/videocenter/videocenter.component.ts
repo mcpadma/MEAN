@@ -1,23 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Video } from'./../video'
+import { Video } from "../video";
+import { VideoService } from './../video.service';
+
 @Component({
   selector: 'app-videocenter',
   templateUrl: './videocenter.component.html',
-  styleUrls: ['./videocenter.component.css']
+  styleUrls: ['./videocenter.component.css'],
+   providers: [VideoService]
 })
 export class VideocenterComponent implements OnInit {
 
-  videos: Video[]=[
-    {"_id":"1","title":"Title 1","url":"url 1","description":"desc 1"},
-    {"_id":"1","title":"Title 2","url":"url 1","description":"desc 2"},
-    {"_id":"1","title":"Title 3","url":"url 1","description":"desc 3"},
-    {"_id":"1","title":"Title 4","url":"url 1","description":"desc 4"}
-  ];
+  // _videoService: any;
+
+  videos: Array<Video>;
   
   selectedVideo: Video;
-  constructor() { }
+  constructor(private _videoService: VideoService) { }
 
   ngOnInit() {
+    this._videoService.getVideos()
+      .subscribe(resVideoData => this.videos = resVideoData);
+      console.log(this.videos);
   }
 
   onSelectVideo(video:any){

@@ -7,6 +7,7 @@
     <video-detail *ngIf="selectedVideo" [video] = "selectedVideo"></video-detail>
   </div>
   <div class="col-sm-3">
+    <button style="margin-bottom:2px;" type="button" (click)="newVideo()" class="btn btn-success btn-block">+ New Video</button>
     <video-list (SelectVideo)="onSelectVideo($event)" [videos] = "videos"></video-list>
   </div>
 </div>
