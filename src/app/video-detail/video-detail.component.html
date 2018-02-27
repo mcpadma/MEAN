@@ -6,7 +6,7 @@
 {{video.url}}
 {{video.description}}-->
 <div>
-  <iframe width="100%" height="300" [src]="video.url | safe"></iframe>
+  <iframe width="100%" height="500" [src]="video.url | safe"></iframe>
 </div>
 <div>
   <form>
@@ -20,5 +20,7 @@
     <div class="form-group">
      <textarea class="form-control" rows="5" name="desc" [(ngModel)]="video.description"></textarea>
     </div>
+    <button tupe="button" (click) = "updateVideo()" class ="btn btn-primary">Update</button>
+    <button tupe="button" (click) = "deleteVideo()" class ="btn btn-danger">Delete</button>
   </form>
 </div>
